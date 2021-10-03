@@ -7,12 +7,12 @@ import io.micronaut.http.client.annotation.Client;
 
 import java.util.List;
 
-import static io.micronaut.http.HttpHeaders.ACCEPT;
-import static io.micronaut.http.HttpHeaders.USER_AGENT;
+import static io.micronaut.http.HttpHeaders.*;
 
 @Client("user-api-client")
 @Header(name = USER_AGENT, value = "Micronaut HTTP Client")
 @Header(name = ACCEPT, value = "application/json")
+@Header(name = AUTHORIZATION, value="Bearer ${test-data.valid-token}")
 public interface UserApiTestClient {
     @Get("/user")
     List<UserResponse> listUsers();
